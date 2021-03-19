@@ -39,7 +39,6 @@ export default class PokemonView extends Component {
     return (
       <div className="pokemon-view">
         <div className="details">
-          <TypeList type={"fire"} />
           <ul className="details-list">
             <li>{`id: ${this.props.data.id}`}</li>
             <li>{`Height: ${this.props.data.height}`}</li>
@@ -57,7 +56,3 @@ export default class PokemonView extends Component {
     );
   }
 }
-
-// let types = this.props.pokemon.types.map((type) => {
-//   return <button>{type}</button>;
-// });
