@@ -1,16 +1,34 @@
 import React, { Component } from "react";
 import TypeList from "./TypeList";
+import axios from "axios";
 export default class PokemonView extends Component {
-  getAllTypes(type) {
-    return <TypeList type={type} />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: [],
+    };
   }
+
+  async fetchList(type) {
+    if (type === "") return;
+    try {
+      const { data } = await axios.get(`/api/type/${type}`);
+      console.log(data);
+      this.setState({ list: data });
+
+      //   this.setState({ pokemonData: data });
+    } catch (error) {
+      console.log(error);
+      alert("Error in fetching pokemon list");
+    }
+  }
+
   render() {
     const newTypes = this.props.data.types?.map((type) => {
       return (
         <span
           onClick={() => {
-            console.log(type.name);
-            this.getAllTypes(type.name);
+            this.fetchList(type.name);
           }}
         >
           {type.name + ` `}{" "}
@@ -27,12 +45,19 @@ export default class PokemonView extends Component {
             <li>{`Height: ${this.props.data.height}`}</li>
             <li>{`Weight: ${this.props.data.weight}`}</li>
             <li>{`name: ${this.props.data.name}`}</li>
-            <li>{/* <span>{`types: `}</span>
-              {newTypes} */}</li>
+            <li>
+              <span>{`types: `}</span>
+              {newTypes}
+            </li>
           </ul>
           <img src={this.props.data.sprites?.front} />
         </div>
+        <TypeList type={this.state.list} />
       </div>
     );
   }
 }
+
+// let types = this.props.pokemon.types.map((type) => {
+//   return <button>{type}</button>;
+// });
