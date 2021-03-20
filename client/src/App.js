@@ -38,7 +38,10 @@ export default class App extends React.Component {
       <>
         <h1>Pokedex!</h1>
         <SearchInput search={this.updatePokemon} />
-        <PokemonView data={this.state.pokemonData} />
+        <PokemonView
+          data={this.state.pokemonData}
+          updatePokemon={this.updatePokemon}
+        />
       </>
     );
   }
