@@ -19,14 +19,15 @@ export default class PokemonView extends Component {
 
   async releasePokemon() {
     axios.delete(`/api/collection/release/${this.props.data.name}`).then(() => {
-      this.setState({ isCaught: false });
+      this.props.updatePokemon(this.props.data.name);
     });
   }
 
   async catchPokemon() {
     try {
       axios.post(`/api/collection/catch`, this.props).then(() => {
-        this.setState({ isCaught: true });
+        // this.setState({ isCaught: !this.props.data.isCaught });
+        this.props.updatePokemon(this.props.data.name);
       });
     } catch (error) {
       console.log(error);
@@ -60,7 +61,7 @@ export default class PokemonView extends Component {
       />
     ) : null;
 
-    const isCaught = this.state.isCaught ? (
+    const isCaught = this.props.data.isCaught ? (
       <button
         onClick={() => {
           this.releasePokemon();

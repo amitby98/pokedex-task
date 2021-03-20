@@ -10,7 +10,7 @@ collection.get("/", (req, res) => {
 
 collection.post("/catch", (req, res) => {
   const { body } = req;
-  body.isCaught = true;
+  body.data.isCaught = true;
   pokemonCollection.push(body);
   res.send("added successfully");
 });
