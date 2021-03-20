@@ -6,6 +6,8 @@ export default class PokemonView extends Component {
     super(props);
     this.state = {
       list: [],
+      srcfront: this.props.data.sprites?.front,
+      srcback: this.props.data.sprites?.back
     };
   }
 
@@ -35,21 +37,25 @@ export default class PokemonView extends Component {
         </span>
       );
     });
-
+    const data = this.props.data;
     return (
       <div className="pokemon-view">
         <div className="details">
           <ul className="details-list">
-            <li>{`id: ${this.props.data.id}`}</li>
-            <li>{`Height: ${this.props.data.height}`}</li>
-            <li>{`Weight: ${this.props.data.weight}`}</li>
-            <li>{`name: ${this.props.data.name}`}</li>
+            <li>{`id: ${data.id ? data.id : ""}`}</li>
+            <li>{`Height: ${data.height ? data.height : ""}`}</li>
+            <li>{`Weight: ${data.weight ? data.weight : ""}`}</li>
+            <li>{`name: ${data.name ? data.name : ""}`}</li>
             <li>
               <span>{`types: `}</span>
               {newTypes}
             </li>
           </ul>
-          <img src={this.props.data.sprites?.front} />
+          <img
+            onmouseover = 
+            onmouseout = 
+            src={this.props.data.sprites?.front}
+          />
         </div>
         <TypeList type={this.state.list} />
       </div>
