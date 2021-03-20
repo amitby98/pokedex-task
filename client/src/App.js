@@ -34,14 +34,14 @@ export default class App extends React.Component {
   render() {
     console.log(this.state.pokemonData);
     return (
-      <>
-        <h1>Pokedex!</h1>
+      <div className="app-pokemon">
+        <div className="header" />
         <SearchInput search={this.updatePokemon} />
         <PokemonView
           data={this.state.pokemonData}
           updatePokemon={this.updatePokemon}
         />
-      </>
+      </div>
     );
   }
 }

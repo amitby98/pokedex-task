@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import TypeList from "./TypeList";
 import axios from "axios";
+import "../styles/PokemonView.css";
+
 export default class PokemonView extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +52,8 @@ export default class PokemonView extends Component {
     const pic = this.props.data.sprites?.front ? (
       <img
         alt="pokemonImage"
+        width="200"
+        height="250"
         src={this.props.data.sprites.front}
         onMouseEnter={(e) => {
           e.target.src = this.props.data.sprites.back;
@@ -62,6 +66,7 @@ export default class PokemonView extends Component {
 
     const isCaught = this.state.isCaught ? (
       <button
+        className="buttons"
         onClick={() => {
           this.releasePokemon();
         }}
@@ -70,6 +75,7 @@ export default class PokemonView extends Component {
       </button>
     ) : (
       <button
+        className="buttons"
         onClick={() => {
           this.catchPokemon();
         }}
@@ -93,7 +99,7 @@ export default class PokemonView extends Component {
     const data = this.props.data;
     return (
       <div className="pokemon-view">
-        <div className="details">
+        <section className="details">
           <ul className="details-list">
             <li>{`id: ${data.id ? data.id : ""}`}</li>
             <li>{`Height: ${data.height ? data.height : ""}`}</li>
@@ -104,9 +110,11 @@ export default class PokemonView extends Component {
               {newTypes}
             </li>
           </ul>
-          <div>{pic}</div>
-          <p>{this.props.data.id ? isCaught : ""}</p>
-        </div>
+        </section>
+        <section className="pic-button">
+          {pic}
+          <p className="catch">{this.props.data.id ? isCaught : ""}</p>
+        </section>
         {this.state.renderList ? (
           <TypeList
             unmountMe={this.handleListUnmount}
