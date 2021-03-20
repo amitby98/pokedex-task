@@ -7,10 +7,15 @@ export default class PokemonView extends Component {
     this.state = {
       list: [],
       isCaught: this.props.data.isCaught,
+      isExist: this.props.isExist,
       renderList: false,
       currentType: "",
     };
     this.handleListUnmount = this.handleListUnmount.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return { isExist: props.isExist };
   }
 
   handleListUnmount() {
@@ -19,14 +24,16 @@ export default class PokemonView extends Component {
 
   async releasePokemon() {
     axios.delete(`/api/collection/release/${this.props.data.name}`).then(() => {
-      this.setState({ isCaught: false });
+      this.props.updatePokemon(this.props.data.name);
+      this.setState({ isExist: this.props.isExist });
     });
   }
 
   async catchPokemon() {
     try {
       axios.post(`/api/collection/catch`, this.props).then(() => {
-        this.setState({ isCaught: true });
+        this.props.updatePokemon(this.props.data.name);
+        this.setState({ isExist: this.props.isExist });
       });
     } catch (error) {
       console.log(error);
@@ -60,7 +67,7 @@ export default class PokemonView extends Component {
       />
     ) : null;
 
-    const isCaught = this.state.isCaught ? (
+    const isCaught = this.state.isExist ? (
       <button
         onClick={() => {
           this.releasePokemon();
