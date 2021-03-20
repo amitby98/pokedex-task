@@ -6,9 +6,44 @@ export default class PokemonView extends Component {
     super(props);
     this.state = {
       list: [],
-      pic: props.data.sprites?.front,
-      isCaught: false,
+      pic: this.props.data.sprites?.front,
+      isCaught: this.props.data.isCaught,
+      renderList: false,
+      currentType: "",
     };
+    this.handleListUnmount = this.handleListUnmount.bind(this);
+  }
+
+  handleListUnmount() {
+    this.setState({ renderList: false });
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (state.pic) {
+      return;
+    }
+    if (props.data.sprites?.front !== state.pic) {
+      return { pic: props.data.sprites?.front };
+    }
+    // if(state.isCaught)
+    return { isCaught: props.data.isCaught, pic: props.data.sprites?.front };
+  }
+
+  async releasePokemon() {
+    axios.delete(`/api/collection/release/${this.props.data.name}`).then(() => {
+      this.setState({ isCaught: false });
+    });
+  }
+
+  async catchPokemon() {
+    try {
+      axios.post(`/api/collection/catch`, this.props).then(() => {
+        this.setState({ isCaught: true });
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Error in catching pokemon");
+    }
   }
 
   async fetchList(type) {
@@ -16,7 +51,7 @@ export default class PokemonView extends Component {
     try {
       const { data } = await axios.get(`/api/type/${type}`);
       console.log(data);
-      this.setState({ list: data });
+      this.setState({ list: data, renderList: true, currentType: type });
     } catch (error) {
       console.log(error);
       alert("Error in fetching pokemon list");
@@ -41,14 +76,26 @@ export default class PokemonView extends Component {
   }
 
   render() {
+    const pic = this.props.data.sprites?.front ? (
+      <img
+        alt="pokemonImage"
+        src={this.state.pic}
+        onMouseOver={() => {
+          this.setState({ pic: this.props.data.sprites.back });
+        }}
+        onMouseOut={() => {
+          this.setState({ pic: this.props.data.sprites.front });
+        }}
+      />
+    ) : null;
+
     const isCaught = this.state.isCaught ? (
       <button
         onClick={() => {
           this.releasePokemon();
         }}
       >
-        {" "}
-        Relese{" "}
+        Relese
       </button>
     ) : (
       <button
@@ -86,20 +133,17 @@ export default class PokemonView extends Component {
               {newTypes}
             </li>
           </ul>
-          <img
-            alt="pokemonImage"
-            src={this.state.pic}
-            onMouseOver={() => {
-              this.setState({ pic: this.props.data.sprites?.back });
-            }}
-            onMouseOut={() => {
-              this.setState({ pic: this.props.data.sprites?.front });
-            }}
-          />
-
+          <div>{pic}</div>
           <p>{this.props.data.id ? isCaught : ""}</p>
         </div>
-        <TypeList type={this.state.list} />
+        {this.state.renderList ? (
+          <TypeList
+            unmountMe={this.handleListUnmount}
+            type={this.state.list}
+            currentType={this.state.currentType}
+            updatePokemon={this.props.updatePokemon}
+          />
+        ) : null}
       </div>
     );
   }
