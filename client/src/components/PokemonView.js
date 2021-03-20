@@ -7,7 +7,7 @@ export default class PokemonView extends Component {
     this.state = {
       list: [],
       srcfront: this.props.data.sprites?.front,
-      srcback: this.props.data.sprites?.back
+      srcback: this.props.data.sprites?.back,
     };
   }
 
@@ -51,11 +51,7 @@ export default class PokemonView extends Component {
               {newTypes}
             </li>
           </ul>
-          <img
-            onmouseover = 
-            onmouseout = 
-            src={this.props.data.sprites?.front}
-          />
+          <img src={this.props.data.sprites?.front} />
         </div>
         <TypeList type={this.state.list} />
       </div>
