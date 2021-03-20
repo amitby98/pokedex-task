@@ -51,7 +51,6 @@ export default class PokemonView extends Component {
               {newTypes}
             </li>
           </ul>
-          <img src={this.props.data.sprites?.front} />
         </div>
         <TypeList type={this.state.list} />
       </div>
