@@ -6,8 +6,7 @@ export default class PokemonView extends Component {
     super(props);
     this.state = {
       list: [],
-      srcfront: this.props.data.sprites?.front,
-      srcback: this.props.data.sprites?.back,
+      pic: this.props.data.sprites?.front,
     };
   }
 
@@ -17,8 +16,6 @@ export default class PokemonView extends Component {
       const { data } = await axios.get(`/api/type/${type}`);
       console.log(data);
       this.setState({ list: data });
-
-      //   this.setState({ pokemonData: data });
     } catch (error) {
       console.log(error);
       alert("Error in fetching pokemon list");
@@ -26,6 +23,12 @@ export default class PokemonView extends Component {
   }
 
   render() {
+    const isCaught = this.props.data.isCaught ? (
+      <button> Relese </button>
+    ) : (
+      <button> Catch </button>
+    );
+
     const newTypes = this.props.data.types?.map((type) => {
       return (
         <span
@@ -37,6 +40,7 @@ export default class PokemonView extends Component {
         </span>
       );
     });
+
     const data = this.props.data;
     return (
       <div className="pokemon-view">
@@ -51,6 +55,18 @@ export default class PokemonView extends Component {
               {newTypes}
             </li>
           </ul>
+          <img
+            alt="pokemonImage"
+            src={this.state.pic}
+            onMouseOver={() => {
+              this.setState({ pic: this.props.data.sprites?.back });
+            }}
+            onMouseOut={() => {
+              this.setState({ pic: this.props.data.sprites?.front });
+            }}
+          />
+
+          <p>{this.props.data.id ? isCaught : ""}</p>
         </div>
         <TypeList type={this.state.list} />
       </div>

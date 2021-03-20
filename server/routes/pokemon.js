@@ -19,6 +19,7 @@ pokemon.get("/:name", async (req, res) => {
         back: sprites["back_default"],
       },
       types: types.map((type) => type.type),
+      isCaught: false,
     });
   } catch (error) {
     console.log(error);
