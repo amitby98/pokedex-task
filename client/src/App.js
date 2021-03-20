@@ -33,7 +33,6 @@ export default class App extends React.Component {
 
   render() {
     console.log(this.state.pokemonData);
-    console.log(this.state.pokemonData.sprites?.front);
     return (
       <>
         <h1>Pokedex!</h1>

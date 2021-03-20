@@ -119,5 +119,3 @@ export default class PokemonView extends Component {
     );
   }
 }
-
-// change
