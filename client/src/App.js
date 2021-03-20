@@ -32,7 +32,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state.pokemonData);
+    console.log(this.state.pokemonData.sprites?.front);
     return (
       <>
         <h1>Pokedex!</h1>
@@ -42,15 +43,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-// async function fetchPokemon(pokemonName) {
-//   if (!pokemonName) return;
-
-//   try {
-//     const { data } = await axios.get(`/api/pokemon/${pokemonName}`);
-//     this.setState({ pokemonData: data });
-//   } catch (error) {
-//     console.log(error);
-//     alert("Error in fetchPokemon");
-//   }
-// }
