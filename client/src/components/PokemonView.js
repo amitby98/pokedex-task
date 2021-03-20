@@ -6,22 +6,20 @@ export default class PokemonView extends Component {
     super(props);
     this.state = {
       list: [],
-      pic: this.props.data.sprites?.front,
-      picture: this.props.data.sprites?.front,
-      isCaught: false,
+      isCaught: this.props.data.isCaught,
+      renderList: false,
+      currentType: "",
     };
   }
 
-  async fetchList(type) {
-    if (type === "") return;
-    try {
-      const { data } = await axios.get(`/api/type/${type}`);
-      console.log(data);
-      this.setState({ list: data });
-    } catch (error) {
-      console.log(error);
-      alert("Error in fetching pokemon list");
-    }
+  handleListUnmount() {
+    this.setState({ renderList: false });
+  }
+
+  async releasePokemon() {
+    axios.delete(`/api/collection/release/${this.props.data.name}`).then(() => {
+      this.setState({ isCaught: false });
+    });
   }
 
   async catchPokemon() {
@@ -42,6 +40,19 @@ export default class PokemonView extends Component {
   }
 
   render() {
+    const pic = this.props.data.sprites?.front ? (
+      <img
+        alt="pokemonImage"
+        src={this.props.data.sprites.front}
+        onMouseEnter={(e) => {
+          e.target.src = this.props.data.sprites.back;
+        }}
+        onMouseLeave={(e) => {
+          e.target.src = this.props.data.sprites.front;
+        }}
+      />
+    ) : null;
+
     const isCaught = this.state.isCaught ? (
       <button
         onClick={() => {
