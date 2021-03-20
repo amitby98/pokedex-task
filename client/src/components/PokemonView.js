@@ -6,7 +6,6 @@ export default class PokemonView extends Component {
     super(props);
     this.state = {
       list: [],
-      pic: this.props.data.sprites?.front,
       isCaught: this.props.data.isCaught,
       renderList: false,
       currentType: "",
@@ -16,17 +15,6 @@ export default class PokemonView extends Component {
 
   handleListUnmount() {
     this.setState({ renderList: false });
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (state.pic) {
-      return;
-    }
-    if (props.data.sprites?.front !== state.pic) {
-      return { pic: props.data.sprites?.front };
-    }
-    // if(state.isCaught)
-    return { isCaught: props.data.isCaught, pic: props.data.sprites?.front };
   }
 
   async releasePokemon() {
@@ -62,12 +50,12 @@ export default class PokemonView extends Component {
     const pic = this.props.data.sprites?.front ? (
       <img
         alt="pokemonImage"
-        src={this.state.pic}
-        onMouseOver={() => {
-          this.setState({ pic: this.props.data.sprites.back });
+        src={this.props.data.sprites.front}
+        onMouseEnter={(e) => {
+          e.target.src = this.props.data.sprites.back;
         }}
-        onMouseOut={() => {
-          this.setState({ pic: this.props.data.sprites.front });
+        onMouseLeave={(e) => {
+          e.target.src = this.props.data.sprites.front;
         }}
       />
     ) : null;
