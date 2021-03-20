@@ -9,13 +9,14 @@ import SearchInput from "./components/SearchInput";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentPokemon: "", pokemonData: {} };
+    this.state = { currentPokemon: "", pokemonData: {}, isExist: false };
     this.updatePokemon = this.updatePokemon.bind(this);
     this.fetchPokemon = this.fetchPokemon.bind(this);
   }
 
   updatePokemon(newPokemonName) {
     this.setState({ currentPokemon: newPokemonName });
+    this.isInCollection(newPokemonName);
     this.fetchPokemon(newPokemonName);
   }
 
@@ -31,6 +32,21 @@ export default class App extends React.Component {
     }
   }
 
+  async isInCollection(name) {
+    const { data } = await axios.get("/api/collection");
+    // console.log(data[0].data);
+    for (let pokemon of data) {
+      // console.log(pokemon.data.name);
+      if (name === pokemon.data.name) {
+        console.log("found");
+        this.setState({ isExist: true });
+        return;
+      }
+    }
+    console.log("not found");
+    this.setState({ isExist: false });
+  }
+
   render() {
     console.log(this.state.pokemonData);
     console.log(this.state.pokemonData.sprites?.front);
@@ -41,6 +57,7 @@ export default class App extends React.Component {
         <PokemonView
           data={this.state.pokemonData}
           updatePokemon={this.updatePokemon}
+          isExist={this.state.isExist}
         />
       </>
     );

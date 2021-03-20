@@ -6,8 +6,39 @@ export default class PokemonView extends Component {
     super(props);
     this.state = {
       list: [],
-      pic: this.props.data.sprites?.front,
+      isCaught: this.props.data.isCaught,
+      isExist: this.props.isExist,
+      renderList: false,
+      currentType: "",
     };
+    this.handleListUnmount = this.handleListUnmount.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return { isExist: props.isExist };
+  }
+
+  handleListUnmount() {
+    this.setState({ renderList: false });
+  }
+
+  async releasePokemon() {
+    axios.delete(`/api/collection/release/${this.props.data.name}`).then(() => {
+      this.props.updatePokemon(this.props.data.name);
+      this.setState({ isExist: this.props.isExist });
+    });
+  }
+
+  async catchPokemon() {
+    try {
+      axios.post(`/api/collection/catch`, this.props).then(() => {
+        this.props.updatePokemon(this.props.data.name);
+        this.setState({ isExist: this.props.isExist });
+      });
+    } catch (error) {
+      console.log(error);
+      alert("Error in catching pokemon");
+    }
   }
 
   async fetchList(type) {
@@ -15,7 +46,7 @@ export default class PokemonView extends Component {
     try {
       const { data } = await axios.get(`/api/type/${type}`);
       console.log(data);
-      this.setState({ list: data });
+      this.setState({ list: data, renderList: true, currentType: type });
     } catch (error) {
       console.log(error);
       alert("Error in fetching pokemon list");
@@ -23,10 +54,35 @@ export default class PokemonView extends Component {
   }
 
   render() {
-    const isCaught = this.props.data.isCaught ? (
-      <button> Relese </button>
+    const pic = this.props.data.sprites?.front ? (
+      <img
+        alt="pokemonImage"
+        src={this.props.data.sprites.front}
+        onMouseEnter={(e) => {
+          e.target.src = this.props.data.sprites.back;
+        }}
+        onMouseLeave={(e) => {
+          e.target.src = this.props.data.sprites.front;
+        }}
+      />
+    ) : null;
+
+    const isCaught = this.state.isExist ? (
+      <button
+        onClick={() => {
+          this.releasePokemon();
+        }}
+      >
+        Relese
+      </button>
     ) : (
-      <button> Catch </button>
+      <button
+        onClick={() => {
+          this.catchPokemon();
+        }}
+      >
+        Catch
+      </button>
     );
 
     const newTypes = this.props.data.types?.map((type) => {
@@ -55,11 +111,17 @@ export default class PokemonView extends Component {
               {newTypes}
             </li>
           </ul>
-          {pic}
-
+          <div>{pic}</div>
           <p>{this.props.data.id ? isCaught : ""}</p>
         </div>
-        <TypeList type={this.state.list} />
+        {this.state.renderList ? (
+          <TypeList
+            unmountMe={this.handleListUnmount}
+            type={this.state.list}
+            currentType={this.state.currentType}
+            updatePokemon={this.props.updatePokemon}
+          />
+        ) : null}
       </div>
     );
   }
