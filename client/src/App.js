@@ -33,11 +33,12 @@ export default class App extends React.Component {
   }
 
   async isInCollection(name) {
+    console.log(name);
     const { data } = await axios.get("/api/collection");
     // console.log(data[0].data);
     for (let pokemon of data) {
-      // console.log(pokemon.data.name);
-      if (name === pokemon.data.name) {
+      console.log(pokemon.data.id);
+      if (name === pokemon.data.name || +name === pokemon.data.id) {
         console.log("found");
         this.setState({ isExist: true });
         return;
@@ -53,7 +54,10 @@ export default class App extends React.Component {
     return (
       <>
         <h1>Pokedex!</h1>
-        <SearchInput search={this.updatePokemon} />
+        <SearchInput
+          search={this.updatePokemon}
+          isInCollection={this.isInCollection}
+        />
         <PokemonView
           data={this.state.pokemonData}
           updatePokemon={this.updatePokemon}

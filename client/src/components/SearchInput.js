@@ -16,7 +16,9 @@ export default class SearchInput extends Component {
         <input name="search-input" onChange={this.updateInput} />
         <button
           name="search-button"
-          onClick={() => this.props.search(this.state.userInput)}
+          onClick={() => {
+            this.props.search(this.state.userInput);
+          }}
         >
           GO!
         </button>
