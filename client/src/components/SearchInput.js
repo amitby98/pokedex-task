@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/SearchInput.css";
 
 export default class SearchInput extends Component {
   constructor(props) {
@@ -12,9 +13,15 @@ export default class SearchInput extends Component {
   }
   render() {
     return (
-      <div>
-        <input name="search-input" onChange={this.updateInput} />
+      <div className="search">
+        <input
+          className="search-input"
+          name="search-input"
+          placeholder="Search a Pokemon"
+          onChange={this.updateInput}
+        />
         <button
+          className="search-button"
           name="search-button"
           onClick={() => this.props.search(this.state.userInput)}
         >
