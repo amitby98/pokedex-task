@@ -65,11 +65,11 @@ export default class App extends React.Component {
           collectionList={this.state.collectionList}
         />
         <CollectionList list={this.state.collectionList} />
-        <div class="center-on-page">
+        {/* <div class="center-on-page">
           <div class="pokeball">
-            <div class="pokeball__button"></div>
-          </div>
-        </div>
+            <div class="pokeball__button"></div> */}
+        {/* </div> */}
+        {/* </div> */}
       </div>
     );
   }

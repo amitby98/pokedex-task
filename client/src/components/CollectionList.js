@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
 class CollectionList extends Component {
+  clickme() {
+    let a = parseFloat(
+      document.getElementsByClassName("back_pokedex")[0].style.height
+    );
+    if (a === 280) {
+      document.getElementsByClassName("back_pokedex")[0].style.height = "0px";
+    } else {
+      document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
+    }
+  }
   render() {
     return (
       <div>
@@ -14,17 +24,26 @@ class CollectionList extends Component {
               //     <img src={pokemon.data.sprites.front}></img>
               //   </div>
               // </li>
-              <div class="center">
-                <div class="pokedex_top">
-                  <div class="pokedex_button" onClick={clickme()}>
-                    <div class="pokedex_button_button">
-                      {/* <div>{pokemon.data.name}</div> */}
-                      <img src={pokemon.data.sprites.front} />
+              <div className="center">
+                <div className="pokedex_top">
+                  <div
+                    className="pokedex_button"
+                    onClick={() => {
+                      this.clickme();
+                    }}
+                  >
+                    <div className="pokedex_button_button">
+                      <li>
+                        <div>{pokemon.data.name}</div>
+                        <div>
+                          <img src={pokemon.data.sprites.front}></img>
+                        </div>
+                      </li>
                     </div>
                   </div>
                 </div>
-                <div class="back_pokedex"></div>
-                <div class="pokedex_bottom"></div>
+                <div className="back_pokedex" />
+                <div className="pokedex_bottom" />
               </div>
             );
           })}
@@ -35,14 +54,3 @@ class CollectionList extends Component {
 }
 
 export default CollectionList;
-
-function clickme() {
-  let a = parseFloat(
-    document.getElementsByClassName("back_pokedex")[0].style.height
-  );
-  if (a === 280) {
-    document.getElementsByClassName("back_pokedex")[0].style.height = "0px";
-  } else {
-    document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
-  }
-}
