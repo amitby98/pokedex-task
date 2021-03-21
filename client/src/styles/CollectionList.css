@@ -45,15 +45,14 @@
   background: #afe3ec;
   width: 300px;
   margin-left: 1px;
+  overflow-x: scroll;
 }
 .center {
   width: fit-content;
-  /* margin-left: auto; */
   height: fit-content;
-  /* margin-right: auto; */
   position: absolute;
   right: 0;
-  bottom: 20%;
+  bottom: 10%;
 }
 @keyframes blink {
   from {
