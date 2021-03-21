@@ -3,7 +3,9 @@ const { Router } = require("express");
 const POKEAPI_BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
 const pokemon = Router();
-
+pokemon.get("/greet", (req, res) => {
+  res.send("hello");
+});
 pokemon.get("/:name", async (req, res) => {
   try {
     const { data } = await axios.get(`${POKEAPI_BASE_URL}/${req.params.name}`);
