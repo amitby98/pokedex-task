@@ -22,6 +22,6 @@ h1 {
 .orderList {
   display: flex;
   /* flex-wrap: wrap; */
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
