@@ -129,11 +129,11 @@ export default class PokemonView extends Component {
             updatePokemon={this.props.updatePokemon}
           />
         ) : null}
-        {/* <div class="center-on-page">
+        <div class="center-on-page">
           <div class="pokeball">
             <div class="pokeball__button"></div>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }
