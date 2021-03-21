@@ -58,12 +58,10 @@ export default class App extends React.Component {
   render() {
     console.log(this.state.pokemonData);
     return (
-      <>
-        <h1>Pokedex!</h1>
-        <SearchInput
-          search={this.updatePokemon}
-          isInCollection={this.isInCollection}
-        />
+      <div className="app-pokemon">
+        <div className="header" />
+        <SearchInput search={this.updatePokemon} />
+        isInCollection={this.isInCollection}
         <PokemonView
           data={this.state.pokemonData}
           updatePokemon={this.updatePokemon}
@@ -71,7 +69,12 @@ export default class App extends React.Component {
           collectionList={this.state.collectionList}
         />
         <ColletionList list={this.state.collectionList} />
-      </>
+        <div class="center-on-page">
+          <div class="pokeball">
+            <div class="pokeball__button"></div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

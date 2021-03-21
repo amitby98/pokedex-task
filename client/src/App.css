@@ -1,38 +1,125 @@
-.App {
-  text-align: center;
+.app-pokemon {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Impact;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 5% 5% 20% 40% 15% 15%;
+  grid-template-rows: 15% 20% 10% 30% 20% 10%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.header {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-image: url(./styles/gif3.gif);
+  width: 100%;
+  height: 20rem;
+  background-size: cover;
+  background-position: center;
+  grid-row-start: 1;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  background-repeat: no-repeat;
 }
 
-.App-link {
-  color: #61dafb;
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  background: #ecf0f1;
+}
+.center-on-page {
+  /* display: hidden; */
+  position: absolute;
+  right: 5%;
+  bottom: 20%;
 }
 
-@keyframes App-logo-spin {
+.pokeball {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  border: 10px solid #000;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: inset -10px 10px 0 10px #ccc;
+  animation: fall 0.25s ease-in-out,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
+}
+.pokeball::before,
+.pokeball::after {
+  content: "";
+  position: absolute;
+}
+.pokeball::before {
+  background: red;
+  width: 100%;
+  height: 50%;
+}
+.pokeball::after {
+  top: calc(50% - 10px);
+  width: 100%;
+  height: 20px;
+  background: #000;
+}
+.pokeball__button {
+  position: absolute;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 60px;
+  background: #7f8c8d;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 10px black;
+  animation: blink 0.5s alternate 7;
+}
+
+@keyframes blink {
   from {
-    transform: rotate(0deg);
+    background: #eee;
   }
   to {
-    transform: rotate(360deg);
+    background: #e74c3c;
+  }
+}
+@keyframes shake {
+  0 {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-10px, 0) rotate(-20deg);
+  }
+  30% {
+    transform: translate(10px, 0) rotate(20deg);
+  }
+  50% {
+    transform: translate(-10px, 0) rotate(-10deg);
+  }
+  60% {
+    transform: translate(10px, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+@keyframes fall {
+  0% {
+    top: -200px;
+  }
+  60% {
+    top: 0;
+  }
+  80% {
+    top: -20px;
+  }
+  100% {
+    top: 0;
   }
 }
