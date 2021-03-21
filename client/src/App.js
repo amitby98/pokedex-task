@@ -5,7 +5,7 @@ import axios from "axios";
 import "./App.css";
 import PokemonView from "./components/PokemonView";
 import SearchInput from "./components/SearchInput";
-import ColletionList from "./components/CollectionList";
+import CollectionList from "./components/CollectionList";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -64,7 +64,7 @@ export default class App extends React.Component {
           isExist={this.state.isExist}
           collectionList={this.state.collectionList}
         />
-        <ColletionList list={this.state.collectionList} />
+        <CollectionList list={this.state.collectionList} />
         <div class="center-on-page">
           <div class="pokeball">
             <div class="pokeball__button"></div>

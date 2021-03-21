@@ -11,7 +11,7 @@ function clickme() {
   }
 }
 
-class ColletionList extends Component {
+class CollectionList extends Component {
   render() {
     return (
       <div>
@@ -45,4 +45,4 @@ class ColletionList extends Component {
   }
 }
 
-export default ColletionList;
+export default CollectionList;
