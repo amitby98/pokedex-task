@@ -60,8 +60,10 @@ export default class App extends React.Component {
     return (
       <div className="app-pokemon">
         <div className="header" />
-        <SearchInput search={this.updatePokemon} />
-        isInCollection={this.isInCollection}
+        <SearchInput
+          search={this.updatePokemon}
+          isInCollection={this.isInCollection}
+        />
         <PokemonView
           data={this.state.pokemonData}
           updatePokemon={this.updatePokemon}
