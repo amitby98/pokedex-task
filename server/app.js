@@ -6,10 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "..", "client", "build")));
+app.use(express.static("../client.build"));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+  res.sendFile(__dirname + "./index.html");
 });
 
 app.use("/api", api);
