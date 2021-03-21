@@ -3,9 +3,6 @@
   width: 20rem;
   height: 28.5rem;
   overflow: scroll;
-  /* margin-top: 3rem; */
-  /* grid-column-start: 4;
-  grid-column-end: 6; */
 }
 .list-header {
   display: flex;
@@ -13,7 +10,6 @@
 }
 .pokemon-list-item {
   font-size: 1.5rem;
-  /* text-align: center; */
 }
 h1 {
   color: rgb(42, 94, 238);

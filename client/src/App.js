@@ -5,7 +5,7 @@ import axios from "axios";
 import "./App.css";
 import PokemonView from "./components/PokemonView";
 import SearchInput from "./components/SearchInput";
-import ColletionList from "./components/ColletionList";
+import ColletionList from "./components/CollectionList";
 
 export default class App extends React.Component {
   constructor(props) {
