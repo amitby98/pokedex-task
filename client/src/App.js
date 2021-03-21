@@ -2,7 +2,7 @@
 
 import React from "react";
 import axios from "axios";
-import "./App.scss";
+import "./App.css";
 import PokemonView from "./components/PokemonView";
 import SearchInput from "./components/SearchInput";
 import ColletionList from "./components/ColletionList";
