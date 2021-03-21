@@ -8,7 +8,7 @@
 .pokedex_top::after {
   content: "";
   position: absolute;
-  top: 150px;
+  top: 140px;
   height: 20px;
   width: 300px;
   background-color: black;
@@ -47,9 +47,13 @@
   margin-left: 1px;
 }
 .center {
-  width: 350px;
-  margin-left: auto;
-  margin-right: auto;
+  width: fit-content;
+  /* margin-left: auto; */
+  height: fit-content;
+  /* margin-right: auto; */
+  position: absolute;
+  right: 0;
+  bottom: 20%;
 }
 @keyframes blink {
   from {
