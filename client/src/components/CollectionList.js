@@ -1,16 +1,5 @@
 import React, { Component } from "react";
 
-function clickme() {
-  let a = parseFloat(
-    document.getElementsByClassName("back_pokedex")[0].style.height
-  );
-  if (a === 280) {
-    document.getElementsByClassName("back_pokedex")[0].style.height = "0px";
-  } else {
-    document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
-  }
-}
-
 class CollectionList extends Component {
   render() {
     return (
@@ -46,3 +35,14 @@ class CollectionList extends Component {
 }
 
 export default CollectionList;
+
+function clickme() {
+  let a = parseFloat(
+    document.getElementsByClassName("back_pokedex")[0].style.height
+  );
+  if (a === 280) {
+    document.getElementsByClassName("back_pokedex")[0].style.height = "0px";
+  } else {
+    document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
+  }
+}
