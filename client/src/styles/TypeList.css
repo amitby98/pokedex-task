@@ -3,7 +3,7 @@
   width: 20rem;
   height: 28.5rem;
   overflow: scroll;
-  background-color: #2272b9;
+  background-color: #ffffff;
   border-radius: 1rem;
   line-height: 2.5rem;
 }
@@ -15,11 +15,13 @@
   font-size: 1.5rem;
 }
 h1 {
-  color: rgb(42, 238, 146);
+  color: #717070;
   padding-top: 1rem;
 }
 
 .orderList {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  flex-flow: column wrap;
+  justify-content: space-between;
 }
