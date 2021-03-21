@@ -13,6 +13,7 @@
 }
 .pokemon-list-item {
   font-size: 1.5rem;
+  list-style: none;
 }
 h1 {
   color: #717070;
