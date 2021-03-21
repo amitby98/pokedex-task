@@ -9,7 +9,7 @@ class TypeList extends Component {
     return (
       <div className="typeLists">
         <div className="list-header">
-          <h1>{`Pokemone type: ${this.props.currentType}`}</h1>
+          <h1>{`Pokemon type: ${this.props.currentType}`}</h1>
           <button
             className="buttons"
             onClick={() => {

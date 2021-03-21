@@ -17,6 +17,7 @@ export default class SearchInput extends Component {
         <input
           className="search-input"
           name="search-input"
+          placeholder="Search a Pokemon"
           onChange={this.updateInput}
         />
         <button
