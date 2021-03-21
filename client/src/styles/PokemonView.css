@@ -51,16 +51,7 @@
   transform: translateY(4px);
 }
 
-/* *,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-body {
-  background: #ecf0f1;
-}
+/* 
 .center-on-page {
   display: hidden;
   position: absolute;

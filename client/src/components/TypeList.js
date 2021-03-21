@@ -19,7 +19,7 @@ class TypeList extends Component {
             Close
           </button>
         </div>
-        <ul>
+        <ul className="orderList">
           {this.props.type.map((name) => {
             return (
               <li
@@ -28,7 +28,7 @@ class TypeList extends Component {
                   this.props.updatePokemon(name);
                 }}
               >
-                {name}
+                {name + " "}
               </li>
             );
           })}

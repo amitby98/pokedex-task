@@ -3,6 +3,9 @@
   width: 20rem;
   height: 28.5rem;
   overflow: scroll;
+  background-color: #2272b9;
+  border-radius: 1rem;
+  line-height: 2.5rem;
 }
 .list-header {
   display: flex;
@@ -14,4 +17,9 @@
 h1 {
   color: rgb(42, 238, 146);
   padding-top: 1rem;
+}
+
+.orderList {
+  display: flex;
+  flex-wrap: wrap;
 }

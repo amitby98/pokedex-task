@@ -79,12 +79,6 @@ export default class App extends React.Component {
           isExist={this.state.isExist}
           collectionList={this.state.collectionList}
         />
-
-        {/* <div class="center-on-page">
-          <div class="pokeball">
-            <div class="pokeball__button"></div> */}
-        {/* </div> */}
-        {/* </div> */}
         <div className="center">
           <div className="pokedex_top">
             <div
