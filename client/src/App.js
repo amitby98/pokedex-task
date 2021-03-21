@@ -26,18 +26,6 @@ export default class App extends React.Component {
     this.fetchPokemon(newPokemonName);
   }
 
-  async fetchPokemon(pokemonName) {
-    if (!pokemonName) return;
-
-    try {
-      const { data } = await axios.get(`/api/pokemon/${pokemonName}`);
-      this.setState({ pokemonData: data });
-    } catch (error) {
-      console.log(error);
-      alert("Error in fetchPokemon");
-    }
-  }
-
   async isInCollection(name) {
     console.log(name);
     const { data } = await axios.get("/api/collection");
@@ -55,8 +43,20 @@ export default class App extends React.Component {
     this.setState({ isExist: false });
   }
 
+  async fetchPokemon(pokemonName) {
+    if (!pokemonName) return;
+
+    try {
+      const { data } = await axios.get(`/api/pokemon/${pokemonName}`);
+      this.setState({ pokemonData: data });
+    } catch (error) {
+      console.log(error);
+      alert("Error in fetchPokemon");
+    }
+  }
   render() {
     console.log(this.state.pokemonData);
+    console.log(this.state.pokemonData.name);
     return (
       <div className="app-pokemon">
         <div className="header" />
