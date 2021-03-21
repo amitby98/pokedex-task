@@ -7,24 +7,24 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 5% 5% 20% 40% 15% 15%;
-      grid-template-columns: 5% 5% 20% 40% 15% 15%;
+  grid-template-columns: 5% 5% 20% 40% 15% 15%;
   -ms-grid-rows: 15% 20% 10% 30% 20% 10%;
-      grid-template-rows: 15% 20% 10% 30% 20% 10%;
+  grid-template-rows: 15% 20% 10% 30% 20% 10%;
 }
 
 .header {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-image: url(./styles/gif3.gif);
   width: 100%;
   height: 20rem;
   background-size: cover;
   background-position: center;
   -ms-grid-row: 1;
-      grid-row-start: 1;
+  grid-row-start: 1;
   -ms-grid-column: 4;
-      grid-column-start: 4;
+  grid-column-start: 4;
   grid-column-end: 5;
   background-repeat: no-repeat;
 }
@@ -138,11 +138,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 img {
@@ -162,7 +162,7 @@ p {
   width: 300px;
   height: 400px;
   -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .poke_box {
@@ -182,69 +182,69 @@ p {
   border-radius: 50%;
   overflow: hidden;
   -webkit-box-shadow: inset -10px 10px 0 10px #ccc;
-          box-shadow: inset -10px 10px 0 10px #ccc;
+  box-shadow: inset -10px 10px 0 10px #ccc;
   -webkit-animation: shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
-          animation: shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  animation: shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
   -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .pokeball:hover {
   -webkit-animation-play-state: running;
-          animation-play-state: running;
+  animation-play-state: running;
 }
 
 @-webkit-keyframes shake {
   0% {
     -webkit-transform: translate(0, 0) rotate(0);
-            transform: translate(0, 0) rotate(0);
+    transform: translate(0, 0) rotate(0);
   }
   20% {
     -webkit-transform: translate(-10px, 0) rotate(-20deg);
-            transform: translate(-10px, 0) rotate(-20deg);
+    transform: translate(-10px, 0) rotate(-20deg);
   }
   30% {
     -webkit-transform: translate(10px, 0) rotate(20deg);
-            transform: translate(10px, 0) rotate(20deg);
+    transform: translate(10px, 0) rotate(20deg);
   }
   50% {
     -webkit-transform: translate(-10px, 0) rotate(-10deg);
-            transform: translate(-10px, 0) rotate(-10deg);
+    transform: translate(-10px, 0) rotate(-10deg);
   }
   60% {
     -webkit-transform: translate(10px, 0) rotate(10deg);
-            transform: translate(10px, 0) rotate(10deg);
+    transform: translate(10px, 0) rotate(10deg);
   }
   100% {
     -webkit-transform: translate(0, 0) rotate(0);
-            transform: translate(0, 0) rotate(0);
+    transform: translate(0, 0) rotate(0);
   }
 }
 
 @keyframes shake {
   0% {
     -webkit-transform: translate(0, 0) rotate(0);
-            transform: translate(0, 0) rotate(0);
+    transform: translate(0, 0) rotate(0);
   }
   20% {
     -webkit-transform: translate(-10px, 0) rotate(-20deg);
-            transform: translate(-10px, 0) rotate(-20deg);
+    transform: translate(-10px, 0) rotate(-20deg);
   }
   30% {
     -webkit-transform: translate(10px, 0) rotate(20deg);
-            transform: translate(10px, 0) rotate(20deg);
+    transform: translate(10px, 0) rotate(20deg);
   }
   50% {
     -webkit-transform: translate(-10px, 0) rotate(-10deg);
-            transform: translate(-10px, 0) rotate(-10deg);
+    transform: translate(-10px, 0) rotate(-10deg);
   }
   60% {
     -webkit-transform: translate(10px, 0) rotate(10deg);
-            transform: translate(10px, 0) rotate(10deg);
+    transform: translate(10px, 0) rotate(10deg);
   }
   100% {
     -webkit-transform: translate(0, 0) rotate(0);
-            transform: translate(0, 0) rotate(0);
+    transform: translate(0, 0) rotate(0);
   }
 }
 
@@ -278,16 +278,16 @@ p {
   border-radius: 50%;
   z-index: 10;
   -webkit-box-shadow: 0 0 0 7px black;
-          box-shadow: 0 0 0 7px black;
+  box-shadow: 0 0 0 7px black;
   -webkit-animation: blink 0.5s alternate infinite;
-          animation: blink 0.5s alternate infinite;
+  animation: blink 0.5s alternate infinite;
   -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .pokeball:hover .pokeball__button {
   -webkit-animation-play-state: running;
-          animation-play-state: running;
+  animation-play-state: running;
 }
 
 @-webkit-keyframes blink {
