@@ -58,6 +58,11 @@ export default class App extends React.Component {
           updatePokemon={this.updatePokemon}
           isExist={this.state.isExist}
         />
+        <div class="center-on-page">
+          <div class="pokeball">
+            <div class="pokeball__button"></div>
+          </div>
+        </div>
       </div>
     );
   }
