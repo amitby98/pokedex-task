@@ -28,7 +28,7 @@ class TypeList extends Component {
                   this.props.updatePokemon(name);
                 }}
               >
-                {name + " "}
+                {name + ", "}
               </li>
             );
           })}
