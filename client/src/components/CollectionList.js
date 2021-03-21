@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/CollectionList.css";
 
 class CollectionList extends Component {
   clickme() {
