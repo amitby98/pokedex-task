@@ -33,17 +33,17 @@ class CollectionList extends Component {
                       this.clickme();
                     }}
                   >
-                    <div className="pokedex_button_button">
-                      <li>
-                        <div>{pokemon.data.name}</div>
-                        <div>
-                          <img src={pokemon.data.sprites.front}></img>
-                        </div>
-                      </li>
-                    </div>
+                    <div className="pokedex_button_button" />
                   </div>
                 </div>
-                <div className="back_pokedex" />
+                <div className="back_pokedex">
+                  <li>
+                    <div>{pokemon.data.name}</div>
+                    <div>
+                      <img src={pokemon.data.sprites.front} />
+                    </div>
+                  </li>
+                </div>
                 <div className="pokedex_bottom" />
               </div>
             );
