@@ -18,7 +18,7 @@ collection.post("/catch", (req, res) => {
 collection.delete("/release/:name", (req, res) => {
   const { name } = req.params;
   pokemonCollection = pokemonCollection.filter((pokemon) => {
-    pokemon.name !== name;
+    return pokemon.data.name !== name;
   });
   res.send("deleted");
 });
