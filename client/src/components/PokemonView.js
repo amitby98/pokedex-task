@@ -59,7 +59,7 @@ export default class PokemonView extends Component {
       <img
         alt="pokemonImage"
         width="200"
-        height="250"
+        height="230"
         src={this.props.data.sprites.front}
         onMouseEnter={(e) => {
           e.target.src = this.props.data.sprites.back;

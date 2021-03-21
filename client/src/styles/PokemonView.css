@@ -9,7 +9,7 @@
   background-size: 40%;
   grid-row-start: 3;
   grid-row-end: 6;
-  grid-column-start: 3;
+  grid-column-start: 1;
   grid-column-end: 7;
   display: flex;
   flex-direction: row;
@@ -17,8 +17,8 @@
 }
 
 .details-list {
-  margin-top: 6rem;
-  margin-left: 2rem;
+  margin-top: 8rem;
+  margin-left: 4rem;
   list-style: none;
   line-height: 1.5rem;
   font-size: 1.5rem;
@@ -27,8 +27,8 @@
 }
 
 .pic-button {
-  margin-top: 3rem;
-  margin-left: 2rem;
+  margin-top: 6rem;
+  margin-left: 3.5rem;
 }
 
 .catch {
