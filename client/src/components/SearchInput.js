@@ -23,7 +23,9 @@ export default class SearchInput extends Component {
         <button
           className="search-button"
           name="search-button"
-          onClick={() => this.props.search(this.state.userInput)}
+          onClick={() => {
+            this.props.search(this.state.userInput);
+          }}
         >
           GO!
         </button>

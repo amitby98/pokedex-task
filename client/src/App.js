@@ -5,11 +5,17 @@ import axios from "axios";
 import "./App.css";
 import PokemonView from "./components/PokemonView";
 import SearchInput from "./components/SearchInput";
+import ColletionList from "./components/ColletionList";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentPokemon: "", pokemonData: {}, isExist: false };
+    this.state = {
+      currentPokemon: "",
+      pokemonData: {},
+      isExist: false,
+      collectionList: [],
+    };
     this.updatePokemon = this.updatePokemon.bind(this);
     this.fetchPokemon = this.fetchPokemon.bind(this);
   }
@@ -33,11 +39,13 @@ export default class App extends React.Component {
   }
 
   async isInCollection(name) {
+    console.log(name);
     const { data } = await axios.get("/api/collection");
+    this.setState({ collectionList: data });
     // console.log(data[0].data);
     for (let pokemon of data) {
-      // console.log(pokemon.data.name);
-      if (name === pokemon.data.name) {
+      console.log(pokemon.data.id);
+      if (name === pokemon.data.name || +name === pokemon.data.id) {
         console.log("found");
         this.setState({ isExist: true });
         return;
@@ -52,12 +60,17 @@ export default class App extends React.Component {
     return (
       <div className="app-pokemon">
         <div className="header" />
-        <SearchInput search={this.updatePokemon} />
+        <SearchInput
+          search={this.updatePokemon}
+          isInCollection={this.isInCollection}
+        />
         <PokemonView
           data={this.state.pokemonData}
           updatePokemon={this.updatePokemon}
           isExist={this.state.isExist}
+          collectionList={this.state.collectionList}
         />
+        <ColletionList list={this.state.collectionList} />
         <div class="center-on-page">
           <div class="pokeball">
             <div class="pokeball__button"></div>
