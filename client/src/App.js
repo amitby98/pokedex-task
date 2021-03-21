@@ -27,14 +27,10 @@ export default class App extends React.Component {
   }
 
   async isInCollection(name) {
-    console.log(name);
     const { data } = await axios.get("/api/collection");
     this.setState({ collectionList: data });
-    // console.log(data[0].data);
     for (let pokemon of data) {
-      console.log(pokemon.data.id);
       if (name === pokemon.data.name || +name === pokemon.data.id) {
-        console.log("found");
         this.setState({ isExist: true });
         return;
       }
@@ -55,8 +51,6 @@ export default class App extends React.Component {
     }
   }
   render() {
-    console.log(this.state.pokemonData);
-    console.log(this.state.pokemonData.name);
     return (
       <div className="app-pokemon">
         <div className="header" />

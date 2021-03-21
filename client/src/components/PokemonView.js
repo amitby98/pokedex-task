@@ -47,7 +47,6 @@ export default class PokemonView extends Component {
     if (type === "") return;
     try {
       const { data } = await axios.get(`/api/type/${type}`);
-      console.log(data);
       this.setState({ list: data, renderList: true, currentType: type });
     } catch (error) {
       console.log(error);
