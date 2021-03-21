@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 
-class ColletionList extends Component {
-  clickme() {
-    var a = parseFloat(
-      document.getElementsByClassName("back_pokedex")[0].style.height
-    );
-    if (a === 280) {
-      document.getElementsByClassName("back_pokedex")[0].style.height = "0px";
-    } else {
-      document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
-    }
+function clickme() {
+  let a = parseFloat(
+    document.getElementsByClassName("back_pokedex")[0].style.height
+  );
+  if (a === 280) {
+    document.getElementsByClassName("back_pokedex")[0].style.height = "0px";
+  } else {
+    document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
   }
+}
 
+class ColletionList extends Component {
   render() {
     return (
       <div>
@@ -27,7 +27,7 @@ class ColletionList extends Component {
               // </li>
               <div class="center">
                 <div class="pokedex_top">
-                  <div class="pokedex_button" onclick="clickme()">
+                  <div class="pokedex_button" onClick={clickme()}>
                     <div class="pokedex_button_button">
                       {/* <div>{pokemon.data.name}</div> */}
                       <img src={pokemon.data.sprites.front} />
