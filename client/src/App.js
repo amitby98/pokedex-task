@@ -6,6 +6,7 @@ import "./App.css";
 import PokemonView from "./components/PokemonView";
 import SearchInput from "./components/SearchInput";
 import CollectionList from "./components/CollectionList";
+import "./styles/CollectionList.css";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -50,6 +51,18 @@ export default class App extends React.Component {
       alert("Error in fetchPokemon");
     }
   }
+
+  clickme() {
+    let a = parseFloat(
+      document.getElementsByClassName("back_pokedex")[0].style.height
+    );
+    if (a === 280) {
+      document.getElementsByClassName("back_pokedex")[0].style.height = "0px";
+    } else {
+      document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
+    }
+  }
+
   render() {
     return (
       <div className="app-pokemon">
@@ -64,12 +77,28 @@ export default class App extends React.Component {
           isExist={this.state.isExist}
           collectionList={this.state.collectionList}
         />
-        <CollectionList list={this.state.collectionList} />
+
         {/* <div class="center-on-page">
           <div class="pokeball">
             <div class="pokeball__button"></div> */}
         {/* </div> */}
         {/* </div> */}
+        <div className="center">
+          <div className="pokedex_top">
+            <div
+              className="pokedex_button"
+              onClick={() => {
+                this.clickme();
+              }}
+            >
+              <div className="pokedex_button_button" />
+            </div>
+          </div>
+          <div className="back_pokedex">
+            <CollectionList list={this.state.collectionList} />
+          </div>
+          <div className="pokedex_bottom" />
+        </div>
       </div>
     );
   }
