@@ -5,11 +5,17 @@ import axios from "axios";
 import "./App.css";
 import PokemonView from "./components/PokemonView";
 import SearchInput from "./components/SearchInput";
+import ColletionList from "./components/ColletionList";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentPokemon: "", pokemonData: {}, isExist: false };
+    this.state = {
+      currentPokemon: "",
+      pokemonData: {},
+      isExist: false,
+      collectionList: [],
+    };
     this.updatePokemon = this.updatePokemon.bind(this);
     this.fetchPokemon = this.fetchPokemon.bind(this);
   }
@@ -35,6 +41,7 @@ export default class App extends React.Component {
   async isInCollection(name) {
     console.log(name);
     const { data } = await axios.get("/api/collection");
+    this.setState({ collectionList: data });
     // console.log(data[0].data);
     for (let pokemon of data) {
       console.log(pokemon.data.id);
@@ -62,7 +69,9 @@ export default class App extends React.Component {
           data={this.state.pokemonData}
           updatePokemon={this.updatePokemon}
           isExist={this.state.isExist}
+          collectionList={this.state.collectionList}
         />
+        <ColletionList list={this.state.collectionList} />
       </>
     );
   }
