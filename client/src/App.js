@@ -16,6 +16,7 @@ export default class App extends React.Component {
       pokemonData: {},
       isExist: false,
       collectionList: [],
+      isShown: false,
     };
     this.updatePokemon = this.updatePokemon.bind(this);
     this.fetchPokemon = this.fetchPokemon.bind(this);
@@ -61,6 +62,7 @@ export default class App extends React.Component {
     } else {
       document.getElementsByClassName("back_pokedex")[0].style.height = "280px";
     }
+    this.setState({ isShown: !this.state.isShown });
   }
 
   render() {
@@ -95,7 +97,9 @@ export default class App extends React.Component {
             </div>
           </div>
           <div className="back_pokedex">
-            <CollectionList list={this.state.collectionList} />
+            {this.state.isShown ? (
+              <CollectionList list={this.state.collectionList} />
+            ) : null}
           </div>
           <div className="pokedex_bottom" />
         </div>
